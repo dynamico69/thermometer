@@ -9,6 +9,7 @@ input.onButtonPressed(Button.B, function () {
 let emptyObstacleY = 0
 let ticks = 0
 let Vogel: game.LedSprite = null
+let Punktestand = 0
 let speed = 750
 let index = 0
 let hindernisse: game.LedSprite[] = []
@@ -32,10 +33,13 @@ basic.forever(function () {
     for (let hindernis3 of hindernisse) {
         if (hindernis3.get(LedSpriteProperty.X) == Vogel.get(LedSpriteProperty.X) && hindernis3.get(LedSpriteProperty.Y) == Vogel.get(LedSpriteProperty.Y)) {
             music.playMelody("E B C5 A B G A F ", 240)
+            basic.showString("Score:" + Punktestand)
+            basic.pause(500)
             game.gameOver()
         }
     }
     ticks += 1
+    Punktestand += 1
     basic.pause(speed)
     if (speed > 400) {
         speed = speed - 10
